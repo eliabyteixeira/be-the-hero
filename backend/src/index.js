@@ -6,7 +6,7 @@ const routes = require('./routes'); // o ./ para identificar que e um arquivo e 
 // instancia a aplicacao
 const app = express();
 
-// protege a aplicacao de quem pode acessar ou nao 
+// protege a aplicacao de quem pode acessar ou
 app.use(cors());
 
 // antes de todas as rotas, faz o express converter o corpo da requisicao para json
