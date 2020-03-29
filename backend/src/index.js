@@ -1,16 +1,16 @@
 // importando o express pra dentro da variavel express
-const express = require('express'); 
+const express = require('express');
 const cors = require('cors');
+const { errors } = require('celebrate');
 const routes = require('./routes'); // o ./ para identificar que e um arquivo e nao um pacote
 
 // instancia a aplicacao
 const app = express();
 
 // protege a aplicacao de quem pode acessar ou
-app.use(cors({
-     origin: 'http://192.168.0.101'
-}));
-
+app.use(cors());
+ // { origin: 'http://192.168.0.101' }
+ 
 // antes de todas as rotas, faz o express converter o corpo da requisicao para json
 // faz a aplicacao entender que todas as requisicoes que vierem com body
 app.use(express.json());
@@ -19,6 +19,9 @@ app.use(express.json());
 
 // usa as rotas importadas do arquivo ./routes
 app.use(routes);
+
+// para o tratamento de erros do backend, retornando um erro em formato json para que possa se tratrado pelo frontend
+app.use(errors());
 
 // a aplicacao vai ouvir na porta 3333
 app.listen(3333);
