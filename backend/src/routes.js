@@ -47,7 +47,7 @@ routes.post('/incidents', celebrate({
 // validacao do envio do id no momento que for deletar um incident
 routes.delete('/incidents/:id', celebrate({
      [Segments.PARAMS]: Joi.object().keys({
-          id: Joi.number().required
+          id: Joi.number().required()
      })
 }), incidentsController.delete);
 
